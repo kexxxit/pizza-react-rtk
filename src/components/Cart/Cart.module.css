@@ -1,0 +1,116 @@
+.cart {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.cart_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+}
+
+.cart_header__title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.cart_header__clear_button {
+    user-select: none;
+    cursor: pointer;
+}
+
+.cart_header__clear_button:hover {
+    text-decoration-line: underline;
+}
+
+.cart_item {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 3fr 1fr;
+    align-items: center;
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+    padding: 10px 0;
+}
+
+.cart_item__img {
+    width: 100px;
+}
+
+.cart_item__options {
+    margin-left: 10px;
+}
+
+.cart_item__options_name {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cart_item__options_size {
+    color: gray;
+}
+
+.cart_item__counter {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.cart_item__counter_button {
+    background-color: #ffe8d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 32px;
+    color: #da6d01;
+    user-select: none;
+    transition: background-color 0.1s linear;
+}
+
+.cart_item__counter_button:hover {
+    background-color: #fcc2a0;
+}
+
+.cart_item__total {
+    margin-right: 50px;
+    font-weight: bold;
+}
+
+.cart_item__delete_button {
+    cursor: pointer;
+}
+
+.cart_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cart_footer__total {
+    font-size: 20px;
+}
+
+.cart_footer__button {
+    background-color: #f67b02;
+    border-radius: 100px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cart_footer__total_price {
+    font-weight: bold;
+    color: #f67b02;
+    margin-left: 5px;
+}

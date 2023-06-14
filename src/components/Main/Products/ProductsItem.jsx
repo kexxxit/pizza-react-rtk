@@ -1,8 +1,16 @@
 import styles from "./Products.module.css";
 import {useState} from "react";
+import {addProductToCart} from "../../../store/products/cartSlice";
+import {useDispatch, useSelector} from "react-redux";
 
-const ProductsItem = ({imageUrl, title, typed, sizes, price, category, rating}) => {
+const ProductsItem = ({id, imageUrl, title, typed, sizes, price, category, rating}) => {
     const [activeSize, setActiveSize] = useState(0)
+    const dispatch = useDispatch()
+    const cartItems = useSelector(state => state.cart.cart)
+
+    const addToCartHandler = () => {
+       dispatch(addProductToCart({id, title, size: sizes[activeSize], price, imageUrl, count: 1}))
+    }
 
     return <div className={styles.products_item}>
         <div>
@@ -18,7 +26,7 @@ const ProductsItem = ({imageUrl, title, typed, sizes, price, category, rating}) 
         </div>
         <div className={styles.products_item__checkout}>
             <div>От {price} руб</div>
-            <div className={styles.add_to_cart_button}>В корзину</div>
+            <div onClick={addToCartHandler} className={styles.add_to_cart_button}>В корзину</div>
         </div>
     </div>
 }

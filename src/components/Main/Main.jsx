@@ -1,7 +1,6 @@
 import Products from "./Products/Products";
 import {useEffect} from "react";
 import { fetchSortedProducts } from "../../store/products/productsSlice";
-import {productsAPI} from "../../api/api";
 import {useDispatch} from "react-redux";
 import Sorting from "./Sorting/Sorting";
 
