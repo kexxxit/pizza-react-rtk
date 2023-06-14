@@ -1,0 +1,29 @@
+.sort {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sort_type {
+    text-decoration: #da6d01 underline dotted;
+    color: #da6d01;
+    margin-left: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.popup {
+    position: absolute;
+    background-color: white;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.33);
+    border-radius: 5px;
+    top: 25px;
+    display: none;
+}
+
+.popup_elem {
+    color: #da6d01;
+    cursor: pointer;
+    border-bottom: 2px rgba(0, 0, 0, 0.1) solid;
+}
