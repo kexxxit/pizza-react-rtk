@@ -1,3 +1,8 @@
+.products {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
 .products_title {
     font-size: 36px;
     font-weight: bold;
@@ -8,10 +13,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
-}
-
-.products_item {
-
+    margin-top: 20px;
 }
 
 .products_item__img {
@@ -67,4 +69,10 @@
 
 .add_to_cart_button:hover {
     background-color: #fcc2a0;
+}
+
+.products_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

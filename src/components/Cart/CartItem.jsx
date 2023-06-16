@@ -1,5 +1,5 @@
 import styles from "./Cart.module.css"
-import {addProductToCart, removeSingleProductFromCart} from "../../store/products/cartSlice";
+import {addProductToCart, decrementProductFromCart, removeProductFromCart} from "../../store/products/cartSlice";
 import {useDispatch} from "react-redux";
 
 const CartItem = ({id, title, size, price, count, imageUrl}) => {
@@ -9,8 +9,12 @@ const CartItem = ({id, title, size, price, count, imageUrl}) => {
         dispatch(addProductToCart({id, title, size, price, imageUrl}))
     }
 
-    const removeFromCartHandler = () => {
-        dispatch(removeSingleProductFromCart({id,size}))
+    const decrementItemFromCartHandler = () => {
+        dispatch(decrementProductFromCart({id,size}))
+    }
+
+    const removeItemFromCartHandler = () => {
+        dispatch(removeProductFromCart({id, size}))
     }
 
     return <div className={styles.cart_item}>
@@ -20,7 +24,7 @@ const CartItem = ({id, title, size, price, count, imageUrl}) => {
             <div className={styles.cart_item__options_size}>{size} см.</div>
         </div>
         <div className={styles.cart_item__counter}>
-            <div onClick={removeFromCartHandler} className={styles.cart_item__counter_button}>
+            <div onClick={decrementItemFromCartHandler} className={styles.cart_item__counter_button}>
                 <span >-</span>
             </div>
             <span>{count}</span>
@@ -29,7 +33,7 @@ const CartItem = ({id, title, size, price, count, imageUrl}) => {
             </div>
         </div>
         <div className={styles.cart_item__total}>{price * count} руб.</div>
-        <div className={styles.cart_item__delete_button}>✖</div>
+        <div onClick={removeItemFromCartHandler} className={styles.cart_item__delete_button}>✖</div>
     </div>
 }
 

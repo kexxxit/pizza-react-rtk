@@ -1,16 +1,24 @@
 import styles from "./Products.module.css"
 import ProductsItem from "./ProductsItem";
-import {useEffect} from "react";
 import {useSelector} from "react-redux";
+import Sorting from "../Sorting/Sorting";
+import ProductsLoader from "../../ui/ProductsLoader/ProductsLoader";
 
 const Products = props => {
     const products = useSelector(state => state.products.products)
         .map((product, index) => <ProductsItem {...product} key={product.id}/>)
+    const isLoading = useSelector(state => state.products.isLoading)
+    const loader = [...new Array(8)].map((_, index) => <ProductsLoader key={index}/>)
 
-    return <div>
-        <div className={styles.products_title}>Пицца</div>
+
+    return <div className={styles.products}>
+        <div className={styles.products_header}>
+            <div className={styles.products_title}>Пицца</div>
+            <Sorting/>
+        </div>
+
         <div className={styles.products_items}>
-            {products}
+            {isLoading ? loader : products}
         </div>
     </div>
 }

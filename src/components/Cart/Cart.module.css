@@ -1,6 +1,22 @@
 .cart {
     width: 700px;
-    margin: 0 auto;
+    margin: 30px auto;
+}
+
+.cart_return_button {
+    font-size: 20px;
+    cursor: pointer;
+    color: #d2d1d1;
+    transition: all linear 0.1s;
+    padding: 5px 10px 5px 0;
+    text-decoration: none;
+
+}
+
+.cart_return_button:hover {
+    color: #858585;
+    background-color: #efefef;
+    box-shadow: 1px 0 2px #adadad ;
 }
 
 .cart_header {
@@ -8,7 +24,10 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+    margin-top: 10px;
 }
+
+
 
 .cart_header__title {
     font-size: 32px;

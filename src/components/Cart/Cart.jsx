@@ -2,15 +2,18 @@ import styles from './Cart.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import CartItem from "./CartItem";
 import {clearCart} from "../../store/products/cartSlice";
+import {Link} from "react-router-dom";
 
 const Cart = props => {
     const products = useSelector(state => state.cart.cart)
         .map((elem, index) => <CartItem key={index} {...elem}/>)
     const totalPrice = useSelector(state => state.cart.totalPrice)
     const dispatch = useDispatch()
+    console.log(props.children)
 
     return <div className={styles.cart}>
         <div>
+            <Link to={'/'} className={styles.cart_return_button}>❮ Назад</Link>
             <div className={styles.cart_header}>
                 <div className={styles.cart_header__title}>Корзина</div>
                 <div onClick={() => {dispatch(clearCart())}} className={styles.cart_header__clear_button}>🛒 Очистить корзину</div>

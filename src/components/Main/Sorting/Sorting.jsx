@@ -1,11 +1,12 @@
 import styles from './Sorting.module.css'
-import {useRef, useState} from "react";
-import {fetchProducts, fetchSortedProducts} from "../../../store/products/productsSlice";
+import {useEffect, useRef, useState} from "react";
+import {fetchSortedProducts, setIsLoading} from "../../../store/products/productsSlice";
 import {useDispatch} from "react-redux";
 
 const Sorting = props => {
     const [isOpen, setIsOpen] = useState(false)
     const popupRef = useRef()
+    const sortRef = useRef()
     const sortByRef = useRef()
     const dispatch = useDispatch()
 
@@ -19,13 +20,28 @@ const Sorting = props => {
         }
     }
 
+    const clickListener = (event) => {
+        if (event.target.offsetParent !== sortRef.current) {
+            setIsOpen(false)
+            popupRef.current.style.display = "none"
+        }
+    }
+
     const onSelectSortType = (sortBy, order, sortType) => {
         togglePopup()
+        dispatch(setIsLoading(true))
         dispatch(fetchSortedProducts({sortBy, order}))
         sortByRef.current.innerHTML = sortType
     }
 
-    return <div className={styles.sort}>
+    useEffect(() => {
+        document.body.addEventListener('click', clickListener)
+        return () => {
+            document.body.removeEventListener('click', clickListener)
+        }
+    }, [])
+
+    return <div ref={sortRef} className={styles.sort}>
         <span>Соритровать по:</span>
         <span ref={sortByRef} onClick={togglePopup} className={styles.sort_type}>рейтингу</span>
         <div ref={popupRef} className={styles.popup}>
