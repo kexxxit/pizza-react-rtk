@@ -14,5 +14,8 @@ export const productsAPI = {
     },
     getProductsDataSorted(sortBy, order) {
         return instance.get(`https://648837a20e2469c038fd4015.mockapi.io/api/items?sortBy=${sortBy}&order=${order}`)
+    },
+    getProductById(id) {
+        return instance.get(`items/${id}`)
     }
 }

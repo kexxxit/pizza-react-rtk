@@ -25,6 +25,10 @@
     font-weight: 700;
 }
 
+.products_item {
+    width: 270px;
+}
+
 .products_item__options {
     background-color: #efefef;
     border-radius: 5px;
@@ -43,11 +47,13 @@
     cursor: pointer;
     text-align: center;
     width: 100%;
+
 }
 
 .products_item__options_size__active {
     background-color: white;
     border-radius: 5px;
+    box-shadow: 0 2px 10px 0 rgba(23, 21, 23, 0.12);
 }
 
 .products_item__checkout {

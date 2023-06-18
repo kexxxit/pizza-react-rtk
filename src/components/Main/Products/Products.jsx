@@ -5,8 +5,8 @@ import Sorting from "../Sorting/Sorting";
 import ProductsLoader from "../../ui/ProductsLoader/ProductsLoader";
 
 const Products = props => {
-    const products = useSelector(state => state.products.products)
-        .map((product, index) => <ProductsItem {...product} key={product.id}/>)
+    const products = useSelector(state => state.products.items)
+        .map((product) => <ProductsItem {...product} key={product.id}/>)
     const isLoading = useSelector(state => state.products.isLoading)
     const loader = [...new Array(8)].map((_, index) => <ProductsLoader key={index}/>)
 

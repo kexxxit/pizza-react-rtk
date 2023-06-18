@@ -19,7 +19,7 @@ export const fetchSortedProducts = createAsyncThunk(
 )
 
 const initialState = {
-    products: [],
+    items: [],
     isLoading: true
 }
 
@@ -33,13 +33,13 @@ export const productsSlice = createSlice({
     },
     extraReducers: {
         [fetchProducts.fulfilled]: (state, action) => {
-            state.products = action.payload
+            state.items = action.payload
         },
         [fetchProducts.rejected]: (state, action) => {
             console.log('Ошибка получения товаров')
         },
         [fetchSortedProducts.fulfilled]: (state, action) => {
-            state.products = action.payload
+            state.items = action.payload
             state.isLoading = false
         },
         [fetchSortedProducts.rejected]: (state, action) => {

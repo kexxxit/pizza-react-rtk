@@ -10,7 +10,7 @@ const CartItem = ({id, title, size, price, count, imageUrl}) => {
     }
 
     const decrementItemFromCartHandler = () => {
-        dispatch(decrementProductFromCart({id,size}))
+        dispatch(decrementProductFromCart({id, size}))
     }
 
     const removeItemFromCartHandler = () => {
@@ -25,11 +25,11 @@ const CartItem = ({id, title, size, price, count, imageUrl}) => {
         </div>
         <div className={styles.cart_item__counter}>
             <div onClick={decrementItemFromCartHandler} className={styles.cart_item__counter_button}>
-                <span >-</span>
+                <span>-</span>
             </div>
             <span>{count}</span>
             <div onClick={addToCartHandler} className={styles.cart_item__counter_button}>
-                <span >+</span>
+                <span>+</span>
             </div>
         </div>
         <div className={styles.cart_item__total}>{price * count} руб.</div>

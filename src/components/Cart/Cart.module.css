@@ -6,7 +6,7 @@
 .cart_return_button {
     font-size: 20px;
     cursor: pointer;
-    color: #d2d1d1;
+    color: #989898;
     transition: all linear 0.1s;
     padding: 5px 10px 5px 0;
     text-decoration: none;
@@ -14,9 +14,9 @@
 }
 
 .cart_return_button:hover {
-    color: #858585;
+    color: #484848;
     background-color: #efefef;
-    box-shadow: 1px 0 2px #adadad ;
+    box-shadow: 0 2px 5px 0 rgba(23, 21, 23, 0.12)
 }
 
 .cart_header {
@@ -26,7 +26,6 @@
     border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
     margin-top: 10px;
 }
-
 
 
 .cart_header__title {
@@ -49,6 +48,16 @@
     align-items: center;
     border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
     padding: 10px 0;
+}
+
+
+.cart_empty {
+    font-size: 36px;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
 }
 
 .cart_item__img {

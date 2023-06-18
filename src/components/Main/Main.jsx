@@ -1,6 +1,6 @@
 import Products from "./Products/Products";
 import {useEffect} from "react";
-import {fetchSortedProducts} from "../../store/products/productsSlice";
+import {fetchSortedProducts, setIsLoading} from "../../store/products/productsSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 const Main = props => {
@@ -9,6 +9,10 @@ const Main = props => {
 
     useEffect(() => {
         dispatch(fetchSortedProducts({sortBy: "rating", order: "desc"}))
+
+        return () => {
+            dispatch(setIsLoading(true))
+        }
     }, [])
 
     return <>
