@@ -1,14 +1,14 @@
 import styles from './Sorting.module.css'
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {fetchSortedProducts, setIsLoading} from "../../../store/products/productsSlice";
-import {useDispatch} from "react-redux";
+import {useThunkDispatch} from "../../../hooks/useAppDispatch";
 
-const Sorting = props => {
-    const [isOpen, setIsOpen] = useState(false)
-    const popupRef = useRef()
-    const sortRef = useRef()
-    const sortByRef = useRef()
-    const dispatch = useDispatch()
+const Sorting: React.FC = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+    const popupRef = useRef() as React.MutableRefObject<HTMLDivElement>
+    const sortRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+    const sortByRef = useRef() as React.MutableRefObject<HTMLSpanElement>;
+    const dispatch = useThunkDispatch()
 
     const togglePopup = () => {
         if (isOpen) {
@@ -20,14 +20,14 @@ const Sorting = props => {
         }
     }
 
-    const clickListener = (event) => {
-        if (event.target.offsetParent !== sortRef.current) {
+    const clickListener = (event: MouseEvent) => {
+        if ((event.target as HTMLBodyElement).offsetParent !== sortRef.current) {
             setIsOpen(false)
             popupRef.current.style.display = "none"
         }
     }
 
-    const onSelectSortType = (sortBy, order, sortType) => {
+    const onSelectSortType = (sortBy: string, order: string, sortType: string) => {
         togglePopup()
         dispatch(setIsLoading(true))
         dispatch(fetchSortedProducts({sortBy, order}))
@@ -42,7 +42,7 @@ const Sorting = props => {
     }, [])
 
     return <div ref={sortRef} className={styles.sort}>
-        <span>Соритровать по:</span>
+        <span>Сортировать по:</span>
         <span ref={sortByRef} onClick={togglePopup} className={styles.sort_type}>рейтингу</span>
         <div ref={popupRef} className={styles.popup}>
             <div onClick={() => {

@@ -1,14 +1,15 @@
 import styles from './Cart.module.css'
-import {useDispatch, useSelector} from "react-redux";
 import CartItem from "./CartItem";
-import {clearCart} from "../../store/products/cartSlice";
+import {CartProduct, clearCart} from "../../store/products/cartSlice";
 import {Link} from "react-router-dom";
+import {useTypedSelector} from "../../hooks/useTypesSelector";
+import {useAppDispatch} from "../../hooks/useAppDispatch";
 
-const Cart = props => {
-    const products = useSelector(state => state.cart.items)
-        .map((elem, index) => <CartItem key={index} {...elem}/>)
-    const totalPrice = useSelector(state => state.cart.totalPrice)
-    const dispatch = useDispatch()
+const Cart = () => {
+    const products = useTypedSelector(state => state.cart.items)
+        .map((elem: CartProduct, index: number) => <CartItem key={index} {...elem}/>)
+    const totalPrice = useTypedSelector(state => state.cart.totalPrice)
+    const dispatch = useAppDispatch()
 
     return <div className={styles.cart}>
         <div>
@@ -20,13 +21,14 @@ const Cart = props => {
                 }} className={styles.cart_header__clear_button}>🛒 Очистить корзину
                 </div>
             </div>
-            <div className={styles.cart_items}>
+            <div>
                 {products.length === 0 ? <div className={styles.cart_empty}>Корзина пуста 😩</div> : products}
             </div>
             <div className={styles.cart_footer}>
                 <div className={styles.cart_footer__total}>
                     <span>Сумма заказа:</span>
-                    <span className={styles.cart_footer__total_price}>{totalPrice} руб.</span>
+                    <span className={styles.cart_footer__total_price}>{totalPrice} ₽
+                    </span>
                 </div>
                 <div className={styles.cart_footer__button}>Оформить заказ</div>
             </div>

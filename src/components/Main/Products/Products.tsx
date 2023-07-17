@@ -1,15 +1,16 @@
 import styles from "./Products.module.css"
 import ProductsItem from "./ProductsItem";
-import {useSelector} from "react-redux";
 import Sorting from "../Sorting/Sorting";
 import ProductsLoader from "../../ui/ProductsLoader/ProductsLoader";
+import React from "react";
+import {useTypedSelector} from "../../../hooks/useTypesSelector";
+import {Product} from "../../../store/products/productsSlice";
 
-const Products = props => {
-    const products = useSelector(state => state.products.items)
-        .map((product) => <ProductsItem {...product} key={product.id}/>)
-    const isLoading = useSelector(state => state.products.isLoading)
+const Products: React.FC = () => {
+    const products = useTypedSelector(state => state.products.items)
+        .map((product: Product) => <ProductsItem {...product} key={product.id}/>)
+    const isLoading = useTypedSelector(state => state.products.isLoading)
     const loader = [...new Array(8)].map((_, index) => <ProductsLoader key={index}/>)
-
 
     return <div className={styles.products}>
         <div className={styles.products_header}>

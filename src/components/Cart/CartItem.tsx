@@ -1,9 +1,15 @@
 import styles from "./Cart.module.css"
-import {addProductToCart, decrementProductFromCart, removeProductFromCart} from "../../store/products/cartSlice";
-import {useDispatch} from "react-redux";
+import {
+    addProductToCart,
+    CartProduct,
+    decrementProductFromCart,
+    removeProductFromCart
+} from "../../store/products/cartSlice";
+import React from "react";
+import {useAppDispatch} from "../../hooks/useAppDispatch";
 
-const CartItem = ({id, title, size, price, count, imageUrl}) => {
-    const dispatch = useDispatch()
+const CartItem: React.FC<CartProduct> = ({id, title, size, price, count, imageUrl}) => {
+    const dispatch = useAppDispatch()
 
     const addToCartHandler = () => {
         dispatch(addProductToCart({id, title, size, price, imageUrl}))
@@ -32,7 +38,7 @@ const CartItem = ({id, title, size, price, count, imageUrl}) => {
                 <span>+</span>
             </div>
         </div>
-        <div className={styles.cart_item__total}>{price * count} руб.</div>
+        <div className={styles.cart_item__total}>{price * count!} ₽</div>
         <div onClick={removeItemFromCartHandler} className={styles.cart_item__delete_button}>✖</div>
     </div>
 }

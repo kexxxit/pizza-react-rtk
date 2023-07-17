@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const MyLoader = (props) => (
+const MyLoader: React.FC = () => (
     <ContentLoader
         speed={2}
         width={270}
@@ -9,7 +9,6 @@ const MyLoader = (props) => (
         viewBox="0 0 270 412"
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
-        {...props}
     >
         <rect x="0" y="272" rx="5" ry="5" width="110" height="26"/>
         <circle cx="134" cy="132" r="132"/>

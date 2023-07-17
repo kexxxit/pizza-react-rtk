@@ -12,10 +12,10 @@ export const productsAPI = {
                 return response
             })
     },
-    getProductsDataSorted(sortBy, order) {
+    getProductsDataSorted(sortBy: string, order: string) {
         return instance.get(`https://648837a20e2469c038fd4015.mockapi.io/api/items?sortBy=${sortBy}&order=${order}`)
     },
-    getProductById(id) {
+    getProductById(id: string) {
         return instance.get(`items/${id}`)
     }
 }

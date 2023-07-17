@@ -1,11 +1,10 @@
 import Products from "./Products/Products";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {fetchSortedProducts, setIsLoading} from "../../store/products/productsSlice";
-import {useDispatch, useSelector} from "react-redux";
+import {useThunkDispatch} from "../../hooks/useAppDispatch";
 
-const Main = props => {
-    const dispatch = useDispatch()
-    const isLoading = useSelector(state => state.products.isLoading)
+const Main = () => {
+    const dispatch = useThunkDispatch()
 
     useEffect(() => {
         dispatch(fetchSortedProducts({sortBy: "rating", order: "desc"}))
@@ -16,7 +15,7 @@ const Main = props => {
     }, [])
 
     return <>
-        <Products isLoading={isLoading}/>
+        <Products/>
     </>
 }
 

@@ -1,0 +1,19 @@
+.footer {
+    border-top: rgba(0, 0, 0, 0.1) 1px solid;
+    display: grid;
+    grid-template-columns: 2fr 8fr 2fr;
+    padding: 20px 0;
+    user-select: none;
+    margin-top: 40px;
+}
+
+.footer_nav__elem {
+    margin-left: 20px;
+}
+
+.footer_nav__elem:hover {
+    text-decoration: #da6d01 underline;
+    color: #da6d01;
+    cursor: pointer;
+
+}

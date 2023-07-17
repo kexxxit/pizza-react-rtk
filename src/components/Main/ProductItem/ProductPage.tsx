@@ -1,17 +1,20 @@
 import styles from './ProductPage.module.css'
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {productsAPI} from "../../../api/api";
+import ProductsLoader from "../../ui/ProductsLoader/ProductsLoader";
+import {Product} from "../../../store/products/productsSlice";
 import ProductsItem from "../Products/ProductsItem";
 
-const ProductPage = (props) => {
-    const [currentProduct, setCurrentProduct] = useState(undefined)
+const ProductPage: React.FC = () => {
+
+    const [currentProduct, setCurrentProduct] = useState<Product>()
     const {id} = useParams()
 
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const {data} = await productsAPI.getProductById(id)
+                const {data} = await productsAPI.getProductById(id!)
                 setCurrentProduct(data)
             } catch (e) {
                 console.log(e)
@@ -21,13 +24,9 @@ const ProductPage = (props) => {
         fetchProduct()
     }, [])
 
-    if (!currentProduct) {
-        return <div>грузимся</div>
-    }
-
     return <div className={styles.pizza_item}>
         <div className={styles.pizza_item__wrapper}>
-            <ProductsItem {...currentProduct}/>
+            {!currentProduct ? <ProductsLoader/> : <ProductsItem {...currentProduct}/>}
         </div>
     </div>
 }
